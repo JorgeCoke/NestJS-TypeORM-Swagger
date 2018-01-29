@@ -1,0 +1,239 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "The Swagger API description",
+        "version": "1.0",
+        "title": "Swagger example"
+    },
+    "basePath": "/api/v1",
+    "tags": [],
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/note": {
+            "get": {
+                "summary": "Obtiene la lista de Notas",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Note"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "note"
+                ],
+                "consumes": [
+                    "application/json"
+                ]
+            },
+            "post": {
+                "summary": "Guarda o actualiza una nota",
+                "description": "Si el id de la nota existe, actualiza; si no se manda id, crea una nota nueva",
+                "parameters": [
+                    {
+                        "name": "Note",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Note"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "schema": {
+                            "$ref": "#/definitions/Note"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "note"
+                ],
+                "consumes": [
+                    "application/json"
+                ]
+            }
+        },
+        "/note/{id}": {
+            "get": {
+                "summary": "Obtiene una Nota por id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "type": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "schema": {
+                            "$ref": "#/definitions/Note"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "note"
+                ],
+                "consumes": [
+                    "application/json"
+                ]
+            },
+            "delete": {
+                "summary": "Borra una nota por id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "required": true,
+                        "in": "path",
+                        "type": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "type": null
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "note"
+                ],
+                "consumes": [
+                    "application/json"
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "Note": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "identificador de la nota"
+                },
+                "texto": {
+                    "type": "string",
+                    "description": "texto de la nota"
+                },
+                "activo": {
+                    "type": "boolean",
+                    "description": "indica si la nota está activa"
+                }
+            },
+            "required": [
+                "texto",
+                "activo"
+            ]
+        },
+        "ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "number",
+                    "description": "codigo de error"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "descripcion del error"
+                }
+            },
+            "required": [
+                "statusCode",
+                "message"
+            ]
+        }
+    }
+}

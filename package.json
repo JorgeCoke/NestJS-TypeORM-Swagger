@@ -1,0 +1,36 @@
+{
+  "name": "NestJS-TypeORM-Swagger",
+  "version": "1.0.0",
+  "description": "NestJS, TypeORM, Swagger and Class-Validator starter repository",
+  "scripts": {
+    "start": "tsc && nohup forever start -m 999 -a -o out.log -e err.log dist/main.js",
+    "build": "tsc",
+    "list": "forever list",
+    "stop": "forever stop 0",
+    "dev": "nodemon -e ts --watch src --exec \"node index.js\" "
+  },
+  "dependencies": {
+    "@nestjs/common": "^4.5.0",
+    "@nestjs/core": "^4.5.0",
+    "@nestjs/swagger": "^1.1.4",
+    "@nestjs/typeorm": "^2.0.0",
+    "express": "^4.16.2",
+    "forever": "^0.15.3",
+    "helmet": "^3.10.0",
+    "morgan-body": "^2.0.2",
+    "mysql": "^2.14.1",
+    "nodemon": "^1.12.1",
+    "redis": "^2.7.1",
+    "reflect-metadata": "^0.1.12",
+    "rxjs": "^5.4.3",
+    "sql.js": "^0.5.0",
+    "sqlite3": "^3.1.13",
+    "typeorm": "^0.1.11",
+    "typescript": "^2.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.28",
+    "nodemon": "^1.12.1",
+    "ts-node": "^3.3.0"
+  }
+}
