@@ -59,16 +59,16 @@ async function bootstrap() {
     .addBearerAuth('x-access-token','header')
     .build();
   const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup(`/${Config.GlobalRoutePrefix}${Config.docsRoute}`, app, document);
+  SwaggerModule.setup(`/${Config.GlobalRoutePrefix}${Config.DocsRoute}`, app, document);
   //Generate .json API Documentation (easly import to Restlet Studio etc...)
   generateSwaggerJSONFile(document);
 
   //Start listening
   await app.listen(Config.Port,Config.IP,() => {
     console.log('|----------------------------------------------------------|')
-    console.log(`|       Server listening: ${Config.apiUrl}       |`);
+    console.log(`|       Server listening: ${Config.ApiUrl}       |`);
     console.log('|----------------------------------------------------------|')
-    console.log(`| Swagger Documentation -> ${Config.apiUrl}${Config.docsRoute} |`);
+    console.log(`| Swagger Documentation -> ${Config.ApiUrl}${Config.DocsRoute} |`);
     console.log('|----------------------------------------------------------|')
   });
 }

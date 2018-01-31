@@ -6,10 +6,10 @@ export class Config {
     public static readonly IP :string = '0.0.0.0';
     public static readonly Port :number = 3001;
     public static readonly GlobalRoutePrefix :string = 'api/v1';
-    public static readonly docsRoute :string = '/docs';
-    public static readonly apiUrl :string = `http://${Config.IP}:${Config.Port}/${Config.GlobalRoutePrefix}`;
+    public static readonly DocsRoute :string = '/docs';
+    public static readonly ApiUrl :string = `http://${Config.IP}:${Config.Port}/${Config.GlobalRoutePrefix}`;
 
-    public static readonly db :SqliteConnectionOptions = {
+    public static readonly DB :SqliteConnectionOptions = {
         type: 'sqlite',
         logging: true,
         logger: 'advanced-console',
@@ -18,7 +18,7 @@ export class Config {
         synchronize: true
     }
 
-    // public static db :MysqlConnectionOptions = {
+    // public static DB :MysqlConnectionOptions = {
     //     name: 'mysql',
     //     type: 'mysql',
     //     logging: true,

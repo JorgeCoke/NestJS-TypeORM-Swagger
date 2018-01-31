@@ -8,7 +8,7 @@ import { Config } from '../../config';
 @ApiUseTags('note')
 @ApiBearerAuth()
 @Controller('note')
-export class AuthNoteController {
+export class NoteAuthController {
 
   constructor(private readonly noteService: NoteService) { }
 
