@@ -21,9 +21,10 @@ npm-debug.log
 /dist
 
 # log
-err.log
+*.log
 nohup.out
-out.log
+nohup
+log/*.log
 
 # sqlite db
-# bd.sql
+bd.sql

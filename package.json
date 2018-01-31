@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "description": "NestJS, TypeORM, Swagger and Class-Validator starter repository",
   "scripts": {
-    "start": "tsc && nohup forever start -m 999 -a -o out.log -e err.log dist/main.js",
+    "start": "tsc && nohup forever start -m 999 -a -o log/out.log -e log/err.log dist/main.js >> log/nohup.log",
     "build": "tsc",
+    "forever": "forever start -m 999 -a -o log/out.log -e log/err.log dist/main.js",
+    "log": "tail -100f log/out.log",
+    "err-log": "tail -100f log/err.log",
+    "all-log": "cat log/out.log",
+    "clean-log": "rm log/*.log",
     "list": "forever list",
     "stop": "forever stop 0",
-    "dev": "nodemon -e ts --watch src --exec \"node index.js\" "
+    "serve": "nodemon -e ts --watch src --exec \"node index.js\" "
   },
   "dependencies": {
     "@nestjs/common": "^4.5.0",

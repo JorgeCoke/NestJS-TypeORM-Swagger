@@ -27,7 +27,8 @@ export class Config {
     //     port: 3306,
     //     username: 'root',
     //     database: 'test',
-    //     entities: [`${__dirname}/entities/**.entity{.ts,.js}`]
+    //     entities: [`${__dirname}/entities/**.entity{.ts,.js}`],
+    //     synchronize: true
     // };
 
     public static readonly redLog :string = '\x1b[31m'

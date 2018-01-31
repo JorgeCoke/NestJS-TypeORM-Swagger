@@ -6,24 +6,38 @@ import "reflect-metadata";
 import * as express from 'express';
 import * as helmet from 'helmet';
 import * as morganBody from 'morgan-body';
+import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as fs from 'fs';
+import * as rfs from 'rotating-file-stream';
+
 import { SwaggerDocument } from '@nestjs/swagger/interfaces';
 import { Config } from './config';
 import { HttpExceptionFilter } from './filter/http-exception.filter';
-
+import { RemoveDates } from './interceptor/removeDates.interceptor';
 
 async function bootstrap() {
 
   const expressInstance = express();
   //Configuracion Express Instance
   expressInstance.use(helmet());          //Helmet
+  expressInstance.use(bodyParser.urlencoded({extended: false}));
   expressInstance.use(bodyParser.json()); //Body Parser
+
+  //Logs
+  const logDirectory = './log';
+  fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);  // ensure log directory exists
+  // create a rotating write stream
+  const accessLogStream = rfs('access.log', {
+    interval: '7d', // rotate weekly
+    path: logDirectory
+  });
+  expressInstance.use(morgan('combined', {stream: accessLogStream}));
   morganBody(expressInstance);            //Log every request body/response
 
   //Create NestJS APP
   const app = await NestFactory.create(ApplicationModule, expressInstance);
-  
+
   //Global Route Prefix
   app.setGlobalPrefix(Config.GlobalRoutePrefix);
 
@@ -51,7 +65,7 @@ async function bootstrap() {
     console.log('|----------------------------------------------------------|')
     console.log(`|       Server listening: ${Config.apiUrl}       |`);
     console.log('|----------------------------------------------------------|')
-    console.log(`| Swagger Documentation -> ${Config.apiUrl}${Config.docsRoute} |`);  
+    console.log(`| Swagger Documentation -> ${Config.apiUrl}${Config.docsRoute} |`);
     console.log('|----------------------------------------------------------|')
   });
 }
