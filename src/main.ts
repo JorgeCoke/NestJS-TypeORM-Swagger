@@ -13,8 +13,8 @@ import * as rfs from 'rotating-file-stream';
 
 import { SwaggerDocument } from '@nestjs/swagger/interfaces';
 import { Config } from './config';
-import { HttpExceptionFilter } from './common/filter/http-exception.filter';
-import { RemoveDates } from './common/interceptor/removeDates.interceptor';
+import { HttpExceptionFilter } from './common/filters/http-exception.filter';
+import { RemoveDates } from './common/interceptors/removeDates.interceptor';
 
 async function bootstrap() {
 

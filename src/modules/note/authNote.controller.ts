@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Param, Put, Delete, HttpException, HttpSta
 import { NoteService } from './note.service';
 import { Note } from '../../entities/note.entity';
 import { ApiUseTags, ApiImplicitBody, ApiResponse, ApiProduces, ApiImplicitParam, ApiConsumes, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
-import { ErrorResponse } from '../../common/interface/errorResponse.interface';
+import { ErrorResponse } from '../../common/interfaces/errorResponse.interface';
 import { Config } from '../../config';
 
 @ApiUseTags('note')
