@@ -10,6 +10,13 @@
     "schemes": [
         "http"
     ],
+    "securityDefinitions": {
+        "bearer": {
+            "type": "apiKey",
+            "name": "x-access-token",
+            "in": "header"
+        }
+    },
     "paths": {
         "/note": {
             "get": {
@@ -192,6 +199,11 @@
                 ],
                 "consumes": [
                     "application/json"
+                ],
+                "security": [
+                    {
+                        "bearer": []
+                    }
                 ]
             }
         }

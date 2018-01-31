@@ -3,11 +3,11 @@ import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOpti
 
 export class Config {
 
-    public static readonly GlobalRoutePrefix :string = 'api/v1';
-    public static readonly Port :number = 3001;
     public static readonly IP :string = '0.0.0.0';
-    public static readonly apiUrl :string = `http://${Config.IP}:${Config.Port}/${Config.GlobalRoutePrefix}`;
+    public static readonly Port :number = 3001;
+    public static readonly GlobalRoutePrefix :string = 'api/v1';
     public static readonly docsRoute :string = '/docs';
+    public static readonly apiUrl :string = `http://${Config.IP}:${Config.Port}/${Config.GlobalRoutePrefix}`;
 
     public static readonly db :SqliteConnectionOptions = {
         type: 'sqlite',

@@ -7,8 +7,11 @@ export class AuthMiddleware implements NestMiddleware {
         return async (req, res, next) => {
             console.warn(Config.greenLog, `[${name}] Request...`);
             //Lógica Middleware
-            //throw new HttpException('No token provided', HttpStatus.UNAUTHORIZED)
-            next();
+            if (!req.headers['x-access-token']){
+                throw new HttpException('No token provided', HttpStatus.UNAUTHORIZED)
+            } else {
+                next();
+            }
         };
     }
 }

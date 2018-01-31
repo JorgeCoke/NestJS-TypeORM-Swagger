@@ -39,6 +39,7 @@ async function bootstrap() {
     .setTitle('Swagger example')
     .setDescription('The Swagger API description')
     .setVersion('1.0')
+    .addBearerAuth('x-access-token','header')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup(`/${Config.GlobalRoutePrefix}${Config.docsRoute}`, app, document);
