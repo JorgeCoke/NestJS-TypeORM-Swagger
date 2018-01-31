@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ApplicationModule } from './app.module';
-import { ValidationPipe } from './pipes/validation.pipe';
+import { ValidationPipe } from './common/pipes/validation.pipe';
 import "reflect-metadata";
 import * as express from 'express';
 import * as helmet from 'helmet';
@@ -13,8 +13,8 @@ import * as rfs from 'rotating-file-stream';
 
 import { SwaggerDocument } from '@nestjs/swagger/interfaces';
 import { Config } from './config';
-import { HttpExceptionFilter } from './filter/http-exception.filter';
-import { RemoveDates } from './interceptor/removeDates.interceptor';
+import { HttpExceptionFilter } from './common/filter/http-exception.filter';
+import { RemoveDates } from './common/interceptor/removeDates.interceptor';
 
 async function bootstrap() {
 

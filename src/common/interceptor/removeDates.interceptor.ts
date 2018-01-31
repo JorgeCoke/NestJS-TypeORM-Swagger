@@ -18,7 +18,7 @@ export class RemoveDates implements NestInterceptor {
 
   clean (object){
     delete object.createdAt;
-    delete object.updatedAt;   
+    delete object.updatedAt;
     return object;
   }
 

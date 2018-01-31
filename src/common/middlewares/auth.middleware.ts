@@ -1,5 +1,5 @@
 import { Middleware, NestMiddleware, ExpressMiddleware, UnauthorizedException, HttpException, HttpStatus } from '@nestjs/common';
-import { Config } from '../config';
+import { Config } from '../../config';
 
 @Middleware()
 export class AuthMiddleware implements NestMiddleware {
