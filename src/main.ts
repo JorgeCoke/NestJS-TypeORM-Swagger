@@ -47,6 +47,9 @@ async function bootstrap() {
   //Http-Exception filter
   app.useGlobalFilters(new HttpExceptionFilter());
 
+  //Interceptors
+  app.useGlobalInterceptors(new RemoveDates());
+
   //Swagger
   const options = new DocumentBuilder()
     .setBasePath(Config.GlobalRoutePrefix)

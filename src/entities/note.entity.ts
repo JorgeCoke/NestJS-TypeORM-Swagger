@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, UpdateDateColumn, CreateDateColumn } from 'typeorm';
 import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
 import { IsString, IsInt, IsNumber, IsBoolean, IsOptional } from 'class-validator';
 
@@ -26,5 +26,11 @@ export class Note {
   @ApiModelProperty({ description: 'indica si la nota está activa' })
   @IsBoolean()
   activo: boolean;
+
+  @CreateDateColumn({ type: "timestamp" })
+  createdAt: number;
+
+  @UpdateDateColumn({ type: "timestamp" })
+  updatedAt: number;
 
 }
