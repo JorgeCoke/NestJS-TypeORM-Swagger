@@ -2,6 +2,10 @@ import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ApplicationModule } from './app.module';
 import { ValidationPipe } from './common/pipes/validation.pipe';
+import { SwaggerDocument } from '@nestjs/swagger/interfaces';
+import { Config } from './config';
+import { HttpExceptionFilter } from './common/filters/http-exception.filter';
+import { RemoveDates } from './common/interceptors/removeDates.interceptor';
 import "reflect-metadata";
 import * as express from 'express';
 import * as helmet from 'helmet';
@@ -10,11 +14,6 @@ import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as fs from 'fs';
 import * as rfs from 'rotating-file-stream';
-
-import { SwaggerDocument } from '@nestjs/swagger/interfaces';
-import { Config } from './config';
-import { HttpExceptionFilter } from './common/filters/http-exception.filter';
-import { RemoveDates } from './common/interceptors/removeDates.interceptor';
 
 async function bootstrap() {
 
@@ -70,13 +69,15 @@ async function bootstrap() {
     console.log('|----------------------------------------------------------|')
     console.log(`| Swagger Documentation -> ${Config.ApiUrl}${Config.DocsRoute} |`);
     console.log('|----------------------------------------------------------|')
+    console.log(`|     Launch: ${new Date()}      |`)
+    console.log('|----------------------------------------------------------|')
   });
 }
 
 bootstrap();
 
 async function generateSwaggerJSONFile(swaggerDocument: SwaggerDocument): Promise<void> {
-  await fs.writeFile('./src/api/swagger2.json',JSON.stringify(swaggerDocument, null, 4),
+  await fs.writeFile('./api/swagger2.json',JSON.stringify(swaggerDocument, null, 4),
       (err: NodeJS.ErrnoException) => {
           if(err) throw err;
       }
