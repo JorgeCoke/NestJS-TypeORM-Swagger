@@ -8,7 +8,7 @@
     "forever": "forever start -m 999 -a -o log/out.log -e log/err.log dist/main.js",
     "log": "tail -100f log/out.log",
     "err-log": "tail -100f log/err.log",
-    "all-log": "cat log/out.log",
+    "full-log": "cat log/out.log",
     "clean-log": "rm log/*.log",
     "list": "forever list",
     "stop": "forever stop 0",

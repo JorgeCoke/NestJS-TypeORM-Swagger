@@ -11,6 +11,7 @@ import { NoteAuthController } from './modules/note/note.auth.controller';
 @Module({
   imports: [TypeOrmModule.forRoot(Config.DB), NoteModule],
 })
+
 export class ApplicationModule implements NestModule {
   configure(consumer: MiddlewaresConsumer): void {
     //Middleware configuration
